@@ -109,7 +109,6 @@ function executeCommand(args, callback) {
   var child;
    args.push('--no-warn');
   var output = args[args.length - 1];
-    console.log(args.join(' '))
   // if on windows or not piping to stdout
   if (process.platform === 'win32' || output !== '-') {
     child = spawn(args[0], args.slice(1));
