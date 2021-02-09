@@ -107,9 +107,9 @@ Qpdf.decrypt = function(input, password, callback) {
 
 function executeCommand(args, callback) {
   var child;
-
+   args.push('--no-warn');
   var output = args[args.length - 1];
-
+    console.log(args.join(' '))
   // if on windows or not piping to stdout
   if (process.platform === 'win32' || output !== '-') {
     child = spawn(args[0], args.slice(1));
@@ -129,6 +129,7 @@ function executeCommand(args, callback) {
     handleError(err, child, outputStream, callback);
   });
   child.stderr.once('data', function(err) {
+      console.log(err);
     handleError(new Error(err || ''), child, outputStream, callback);
   });
 
